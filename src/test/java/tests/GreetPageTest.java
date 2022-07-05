@@ -1,5 +1,6 @@
 package tests;
 
+import enums.Pages;
 import org.junit.jupiter.api.Test;
 import ui.SignInPage;
 

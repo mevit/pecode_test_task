@@ -2,7 +2,7 @@ package ui;
 
 import org.openqa.selenium.By;
 
-public class SignInPage extends BasePage{
+public class SignInPage extends BasePage {
 
     private final By nameField = By.name("username");
 
@@ -10,7 +10,13 @@ public class SignInPage extends BasePage{
 
     private final By loginButton = By.cssSelector(".btn-success");
 
-    private final By errorMessage = By.cssSelector(".has-error");
+    private final By noAccountErrorMessage = By.xpath("//*[text() = 'No account found with that username.']");
+
+    private final By incorrectPasswordErrorMessage = By.xpath("//*[text() = 'The password you entered was not valid.']");
+
+    private final By emptyNameFieldErrorMessage = By.xpath("//*[text() = 'Please enter username.']");
+
+    private final By emptyPasswordFieldErrorMessage = By.xpath("//*[text() = 'Please enter your password.']");
 
     public SignInPage assertPageIsDisplayed() {
         shouldBeDisplayed(nameField);
@@ -37,9 +43,23 @@ public class SignInPage extends BasePage{
         return this;
     }
 
-    public SignInPage assertErrorMessageIsDisplayed(String message) {
-        shouldBeDisplayed(errorMessage);
-        shouldHaveExactText(errorMessage, message);
+    public SignInPage assertWrongPasswordErrorMessageDisplayed() {
+        shouldBeDisplayed(incorrectPasswordErrorMessage);
+        return this;
+    }
+
+    public SignInPage assertEmptyNameErrorMessageDisplayed() {
+        shouldBeDisplayed(emptyNameFieldErrorMessage);
+        return this;
+    }
+
+    public SignInPage assertEmptyPasswordErrorMessageDisplayed() {
+        shouldBeDisplayed(emptyPasswordFieldErrorMessage);
+        return this;
+    }
+
+    public SignInPage assertNoAccountErrorMessageDisplayed() {
+        shouldBeDisplayed(noAccountErrorMessage);
         return this;
     }
 }

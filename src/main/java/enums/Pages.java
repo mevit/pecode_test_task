@@ -1,4 +1,4 @@
-package tests;
+package enums;
 
 public enum Pages {
     SIGN_IN("qa-portal/registerlogin/registerlogin.php"),

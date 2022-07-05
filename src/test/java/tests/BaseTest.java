@@ -1,12 +1,10 @@
 package tests;
 
 import driver.DriverManager;
+import enums.Pages;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
-@Execution(ExecutionMode.CONCURRENT)
 class BaseTest {
     private static final String BASE_URL = "https://www.pecodesoftware.com/";
 

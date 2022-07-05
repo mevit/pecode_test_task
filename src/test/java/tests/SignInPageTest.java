@@ -1,5 +1,6 @@
 package tests;
 
+import enums.Pages;
 import org.junit.jupiter.api.Test;
 import ui.SignInPage;
 
@@ -14,7 +15,7 @@ class SignInPageTest extends BaseTest {
                 .enterName("test")
                 .enterPassword("password")
                 .clickLogin()
-                .assertErrorMessageIsDisplayed("The password you entered was not valid.");
+                .assertWrongPasswordErrorMessageDisplayed();
     }
 
     @Test
@@ -26,17 +27,17 @@ class SignInPageTest extends BaseTest {
                 .enterName("benny")
                 .enterPassword("password")
                 .clickLogin()
-                .assertErrorMessageIsDisplayed("No account found with that username.");
+                .assertNoAccountErrorMessageDisplayed();
     }
 
-//    @Test
-//    void errorMessagesAreDisplayedIfFieldsAreEmpty() {
-//        goTo(Pages.SIGN_IN);
-//
-//        new SignInPage()
-//                .assertPageIsDisplayed()
-//                .clickLogin()
-//                .assertErrorMessageIsDisplayed("Please enter username.")
-//                .assertErrorMessageIsDisplayed("Please enter your password.");
-//    }
+    @Test
+    void errorMessagesAreDisplayedIfFieldsAreEmpty() {
+        goTo(Pages.SIGN_IN);
+
+        new SignInPage()
+                .assertPageIsDisplayed()
+                .clickLogin()
+                .assertEmptyNameErrorMessageDisplayed()
+                .assertEmptyPasswordErrorMessageDisplayed();
+    }
 }
